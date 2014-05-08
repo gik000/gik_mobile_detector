@@ -1,0 +1,4 @@
+name = Mobile detector
+description = Mobile detector
+package = Un moscerino nel web
+core = 7.x

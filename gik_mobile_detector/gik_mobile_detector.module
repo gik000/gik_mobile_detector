@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Include Mobile Detect library
+ * ref: http://mobiledetect.net/
+ */
+function _gik_mobile_detector_get_library(){
+  module_load_include('php','gik_mobile_detector','Mobile-Detect/Mobile_Detect');
+}
+
+function gik_mobile_detector_preprocess_html(&$variables){
+  _gik_mobile_detector_get_library();
+  $detect = new Mobile_Detect;
+  if($detect->isTablet()){
+    $class = 'device-tablet';
+  } elseif($detect->isMobile()){
+    $class = 'device-mobile';
+  } else {
+    $class = 'device-desktop';
+  }
+  //adding class to body
+  $variables['classes_array'][] = $class;
+}
